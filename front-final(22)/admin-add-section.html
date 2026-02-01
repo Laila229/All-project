@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Section - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex items-center gap-sm"
+                    style="margin-bottom: var(--spacing-md); color: var(--text-secondary); font-size: 0.875rem;">
+                    <a href="admin-dashboard.html">Dashboard</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <a href="admin-sections.html">Sections</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <span style="color: var(--text-primary);">Add Section</span>
+                </div>
+
+                <div class="page-header">
+                    <h1 class="page-title">Add New Section</h1>
+                    <p style="color: var(--text-secondary);">Divide a class into manageable groups</p>
+                </div>
+
+                <div class="card" style="max-width: 600px;">
+                    <form
+                        onsubmit="event.preventDefault(); alert('Section Created!'); window.location.href='admin-sections.html';">
+                        <div class="form-group">
+                            <label class="form-label">Select Class</label>
+                            <select class="form-select" required>
+                                <option value="" disabled selected>Select a class...</option>
+                                <option value="1">Grade 1</option>
+                                <option value="2">Grade 2</option>
+                                <option value="10">Grade 10</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Section Name</label>
+                            <input type="text" class="form-input" placeholder="e.g. A, B, Red, Blue" required>
+                            <p style="margin-top: 4px; font-size: 0.75rem; color: var(--text-secondary);">Usually a
+                                single letter (A, B, C) or name.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Max Capacity (Optional)</label>
+                            <input type="number" class="form-input" placeholder="30">
+                        </div>
+
+                        <div class="flex justify-end gap-md" style="margin-top: var(--spacing-xl);">
+                            <a href="admin-sections.html" class="btn btn-outline">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Create Section</button>
+                        </div>
+                    </form>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('admin', 'admin-sections.html', { name: 'Administrator' });
+        });
+    </script>
+</body>
+
+</html>

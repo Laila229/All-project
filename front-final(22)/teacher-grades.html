@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradebook Overview - EduTrack</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Ensure footer sticks */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container-fluid {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Mobile Navbar -->
+    <nav class="mobile-navbar justify-content-between">
+        <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-light border-0" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
+            <span class="fw-bold text-primary"><i class="bi bi-book-half me-2"></i>EduTrack</span>
+        </div>
+        <div class="dropdown">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2"
+                style="width: 32px; height: 32px;">T</div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand text-primary"><i class="bi bi-book-half me-2"></i>EduTrack</div>
+        <nav class="nav flex-column mt-3">
+            <a href="teacher-dashboard.html" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="teacher-subjects.html" class="nav-link"><i class="bi bi-book"></i> My Subjects</a>
+            <a href="teacher-grades.html" class="nav-link active"><i class="bi bi-journal-text"></i> Gradebook</a>
+            <a href="teacher-add-grade.html" class="nav-link"><i class="bi bi-plus-circle"></i> Add Grades</a>
+            <a href="teacher-attendance.html" class="nav-link"><i class="bi bi-calendar-check"></i> Attendance</a>
+            <a href="teacher-profile.html" class="nav-link"><i class="bi bi-person"></i> Profile</a>
+            <div class="mt-auto border-top pt-2"><a href="teacher-login.html" class="nav-link text-danger"><i
+                        class="bi bi-box-arrow-right"></i> Logout</a></div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="container-fluid p-0">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3 mb-0">Gradebook Overview</h1>
+                <a href="teacher-add-grade.html" class="btn btn-primary"><i class="bi bi-plus-lg me-2"></i>Add New Exam
+                    Grades</a>
+            </div>
+
+            <!-- Filters -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <form class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-muted">Subject</label>
+                            <select class="form-select">
+                                <option selected>Mathematics</option>
+                                <option>Physics</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-muted">Class</label>
+                            <select class="form-select">
+                                <option selected>Grade 10</option>
+                                <option>Grade 9</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-muted">Section</label>
+                            <select class="form-select">
+                                <option selected>Section A</option>
+                                <option>Section B</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Read-Only Overview Table -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle mb-0 text-center">
+                            <thead class="bg-light align-middle">
+                                <tr>
+                                    <th class="border-0 p-3 text-start bg-light sticky-start" style="min-width: 200px;">
+                                        Student Name</th>
+                                    <th class="border-0 p-3 font-monospace small">
+                                        HW 1<br><span class="text-muted fw-normal">10 pts</span>
+                                    </th>
+                                    <th class="border-0 p-3 font-monospace small">
+                                        HW 2<br><span class="text-muted fw-normal">10 pts</span>
+                                    </th>
+                                    <th class="border-0 p-3 bg-light border-end">
+                                        Assign. Total<br><span class="fw-bold">20 pts</span>
+                                    </th>
+                                    <th class="border-0 p-3">
+                                        Mid-Term<br><span class="text-muted fw-normal">100 pts</span>
+                                    </th>
+                                    <th class="border-0 p-3">
+                                        Quiz 1<br><span class="text-muted fw-normal">20 pts</span>
+                                    </th>
+                                    <th class="border-0 p-3 bg-primary text-white border-start">
+                                        Final Grade<br><span class="fw-normal opacity-75">140 pts</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-3 text-start fw-medium sticky-start bg-white">John Doe</td>
+                                    <td class="p-3 text-muted">9</td>
+                                    <td class="p-3 text-muted">10</td>
+                                    <td class="p-3 fw-bold border-end">19</td>
+                                    <td class="p-3">85</td>
+                                    <td class="p-3">18</td>
+                                    <td class="p-3 fw-bold fs-5 bg-primary bg-opacity-10 text-primary border-start">122
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-start fw-medium sticky-start bg-white">Jane Smith</td>
+                                    <td class="p-3 text-muted">10</td>
+                                    <td class="p-3 text-muted">10</td>
+                                    <td class="p-3 fw-bold border-end">20</td>
+                                    <td class="p-3">92</td>
+                                    <td class="p-3">19</td>
+                                    <td class="p-3 fw-bold fs-5 bg-primary bg-opacity-10 text-primary border-start">131
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-start fw-medium sticky-start bg-white">Alice Johnson</td>
+                                    <td class="p-3 text-muted">8</td>
+                                    <td class="p-3 text-muted">9</td>
+                                    <td class="p-3 fw-bold border-end">17</td>
+                                    <td class="p-3">78</td>
+                                    <td class="p-3">15</td>
+                                    <td class="p-3 fw-bold fs-5 bg-primary bg-opacity-10 text-primary border-start">110
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
+                        <span class="fw-bold text-primary">EduTrack</span>
+                    </div>
+                    <div class="col-md-4 text-center mb-2 mb-md-0">
+                        <small class="text-muted">Support: +962-7-9000-0000</small>
+                    </div>
+                    <div class="col-md-4 text-center text-md-end">
+                        <small class="text-muted mb-0 me-3">&copy; 2026</small>
+                        <a href="#" class="footer-link">Privacy</a>
+                        <a href="#" class="footer-link">Terms</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('sidebarToggle');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (toggle) toggle.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('show'); overlay.classList.toggle('show'); });
+            if (overlay) overlay.addEventListener('click', () => { sidebar.classList.remove('show'); overlay.classList.remove('show'); });
+        });
+    </script>
+</body>
+
+</html>

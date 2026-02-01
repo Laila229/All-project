@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Management - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex justify-between items-center page-header">
+                    <div>
+                        <h1 class="page-title">Homework</h1>
+                        <p style="color: var(--text-secondary);">Manage assignments and projects</p>
+                    </div>
+                    <a href="teacher-create-homework.html" class="btn btn-primary">
+                        <i data-lucide="plus" style="margin-right: 0.5rem; width: 18px; height: 18px;"></i>
+                        Create Homework
+                    </a>
+                </div>
+
+                <div class="card" style="padding: 0; overflow: hidden;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Class</th>
+                                <th>Subject</th>
+                                <th>Due Date</th>
+                                <th>Submissions</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 500;">Algebra Linear Equations</td>
+                                <td>Class 8B</td>
+                                <td>Mathematics</td>
+                                <td style="color: var(--danger);">Sep 25, 2024</td>
+                                <td>24/28</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>
+                                    <div class="flex gap-sm">
+                                        <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                data-lucide="eye" style="width: 16px; height: 16px;"></i></button>
+                                        <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                data-lucide="edit-2" style="width: 16px; height: 16px;"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 500;">Chapter 3 Summary</td>
+                                <td>Class 5A</td>
+                                <td>English Lit</td>
+                                <td>Sep 30, 2024</td>
+                                <td>5/32</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>
+                                    <div class="flex gap-sm">
+                                        <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                data-lucide="eye" style="width: 16px; height: 16px;"></i></button>
+                                        <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                data-lucide="edit-2" style="width: 16px; height: 16px;"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('teacher', 'teacher-homework.html', { name: 'Sarah Wilson' });
+        });
+    </script>
+</body>
+
+</html>

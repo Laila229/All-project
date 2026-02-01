@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Attendance - EduTrack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="mobile-navbar justify-content-between">
+        <div class="d-flex align-items-center gap-3"><button class="btn btn-light border-0" id="sidebarToggle"><i
+                    class="bi bi-list fs-4"></i></button><span class="fw-bold text-primary"><i
+                    class="bi bi-book-half me-2"></i>EduTrack</span></div>
+        <div class="dropdown">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2"
+                style="width: 32px; height: 32px;">S</div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand text-primary"><i class="bi bi-book-half me-2"></i>EduTrack</div>
+        <nav class="nav flex-column mt-3">
+            <a href="student-dashboard.html" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="student-subjects.html" class="nav-link"><i class="bi bi-book"></i> My Subjects</a>
+            <a href="student-homework.html" class="nav-link"><i class="bi bi-pencil-square"></i> Homework</a>
+            <a href="student-attendance.html" class="nav-link active"><i class="bi bi-calendar-check"></i>
+                Attendance</a>
+            <a href="student-grades.html" class="nav-link"><i class="bi bi-journal-check"></i> Grades</a>
+            <a href="student-profile.html" class="nav-link"><i class="bi bi-person"></i> Profile</a>
+            <div class="mt-auto border-top pt-2"><a href="student-login.html" class="nav-link text-danger"><i
+                        class="bi bi-box-arrow-right"></i> Logout</a></div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-4">Attendance History</h1>
+
+            <div class="row mb-4 g-3">
+                <div class="col-md-4">
+                    <div class="card bg-success bg-opacity-10 border-success p-3 text-center">
+                        <h6 class="text-success fw-bold">Present</h6>
+                        <h2 class="mb-0">42</h2>
+                        <small class="text-muted">Days</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-danger bg-opacity-10 border-danger p-3 text-center">
+                        <h6 class="text-danger fw-bold">Absent</h6>
+                        <h2 class="mb-0">3</h2>
+                        <small class="text-muted">Days</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-warning bg-opacity-10 border-warning p-3 text-center">
+                        <h6 class="text-warning text-dark fw-bold">Late</h6>
+                        <h2 class="mb-0">1</h2>
+                        <small class="text-muted">Days</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select class="form-select">
+                                <option>September 2024</option>
+                                <option>October 2024</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="border-0 p-3">Date</th>
+                                    <th class="border-0 p-3">Status</th>
+                                    <th class="border-0 p-3">Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-3">Sep 25, 2024</td>
+                                    <td class="p-3"><span class="badge bg-success">Present</span></td>
+                                    <td class="p-3 text-muted">-</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Sep 24, 2024</td>
+                                    <td class="p-3"><span class="badge bg-danger">Absent</span></td>
+                                    <td class="p-3 text-muted">Sick Leave</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Sep 23, 2024</td>
+                                    <td class="p-3"><span class="badge bg-warning text-dark">Late</span></td>
+                                    <td class="p-3 text-muted">Bus delay</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Sep 20, 2024</td>
+                                    <td class="p-3"><span class="badge bg-success">Present</span></td>
+                                    <td class="p-3 text-muted">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer mt-auto">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
+                            <span class="fw-bold text-primary">EduTrack</span>
+                        </div>
+                        <div class="col-md-4 text-center mb-2 mb-md-0">
+                            <small class="text-muted">Support: +962-7-9000-0000</small>
+                        </div>
+                        <div class="col-md-4 text-center text-md-end">
+                            <small class="text-muted mb-0 me-3">&copy; 2026</small>
+                            <a href="#" class="footer-link">Privacy</a>
+                            <a href="#" class="footer-link">Terms</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('sidebarToggle');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (toggle) toggle.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('show'); overlay.classList.toggle('show'); });
+            if (overlay) overlay.addEventListener('click', () => { sidebar.classList.remove('show'); overlay.classList.remove('show'); });
+        });
+    </script>
+</body>
+
+</html>

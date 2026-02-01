@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Classes - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex justify-between items-center page-header">
+                    <div>
+                        <h1 class="page-title">Manage Classes</h1>
+                        <p style="color: var(--text-secondary);">Create and update class definitions</p>
+                    </div>
+                    <a href="admin-add-class.html" class="btn btn-primary">
+                        <i data-lucide="plus" style="margin-right: 0.5rem; width: 18px; height: 18px;"></i>
+                        Add Class
+                    </a>
+                </div>
+
+                <div class="card" style="padding: 0; overflow: hidden;">
+                    <div class="table-container" style="border: none; border-radius: 0;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Class Name</th>
+                                    <th>Sections</th>
+                                    <th>Class Teacher</th>
+                                    <th>Students</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div
+                                                style="width: 32px; height: 32px; background-color: #DBEAFE; color: var(--primary); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                                1
+                                            </div>
+                                            <span style="font-weight: 500;">Grade 1</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="flex gap-sm">
+                                            <span class="badge badge-blue">A</span>
+                                            <span class="badge badge-blue">B</span>
+                                            <span class="badge badge-blue">C</span>
+                                        </div>
+                                    </td>
+                                    <td>Sarah Wilson</td>
+                                    <td>85</td>
+                                    <td>
+                                        <div class="flex gap-sm">
+                                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                    data-lucide="edit-2"
+                                                    style="width: 16px; height: 16px;"></i></button>
+                                            <button class="btn btn-outline"
+                                                style="padding: 0.25rem 0.5rem; color: var(--danger); border-color: var(--danger);"><i
+                                                    data-lucide="trash" style="width: 16px; height: 16px;"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div
+                                                style="width: 32px; height: 32px; background-color: #DBEAFE; color: var(--primary); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                                2
+                                            </div>
+                                            <span style="font-weight: 500;">Grade 2</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="flex gap-sm">
+                                            <span class="badge badge-blue">A</span>
+                                            <span class="badge badge-blue">B</span>
+                                        </div>
+                                    </td>
+                                    <td>Mike Johnson</td>
+                                    <td>62</td>
+                                    <td>
+                                        <div class="flex gap-sm">
+                                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                    data-lucide="edit-2"
+                                                    style="width: 16px; height: 16px;"></i></button>
+                                            <button class="btn btn-outline"
+                                                style="padding: 0.25rem 0.5rem; color: var(--danger); border-color: var(--danger);"><i
+                                                    data-lucide="trash" style="width: 16px; height: 16px;"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('admin', 'admin-classes.html', { name: 'Administrator' });
+        });
+    </script>
+</body>
+
+</html>

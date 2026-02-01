@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Attendance - EduTrack</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .attendance-radio:checked+.form-check-label.lbl-present {
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .attendance-radio:checked+.form-check-label.lbl-absent {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .attendance-radio:checked+.form-check-label.lbl-late {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        /* Ensure footer sticks */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container-fluid {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Mobile Navbar -->
+    <nav class="mobile-navbar justify-content-between">
+        <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-light border-0" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
+            <span class="fw-bold text-primary"><i class="bi bi-book-half me-2"></i>EduTrack</span>
+        </div>
+        <div class="dropdown">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2"
+                style="width: 32px; height: 32px;">T</div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand text-primary"><i class="bi bi-book-half me-2"></i>EduTrack</div>
+        <nav class="nav flex-column mt-3">
+            <a href="teacher-dashboard.html" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="teacher-subjects.html" class="nav-link"><i class="bi bi-book"></i> My Subjects</a>
+            <a href="teacher-grades.html" class="nav-link"><i class="bi bi-journal-text"></i> Gradebook</a>
+            <a href="teacher-add-grade.html" class="nav-link"><i class="bi bi-plus-circle"></i> Add Grades</a>
+            <a href="teacher-attendance.html" class="nav-link active"><i class="bi bi-calendar-check"></i>
+                Attendance</a>
+            <a href="teacher-profile.html" class="nav-link"><i class="bi bi-person"></i> Profile</a>
+            <div class="mt-auto border-top pt-2"><a href="teacher-login.html" class="nav-link text-danger"><i
+                        class="bi bi-box-arrow-right"></i> Logout</a></div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="container-fluid p-0">
+            <!-- Header -->
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+                <h1 class="h3 mb-0">Daily Attendance</h1>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-secondary" onclick="resetAttendance()">Reset All</button>
+                    <button class="btn btn-primary" onclick="markAllPresent()">Mark All Present</button>
+                </div>
+            </div>
+
+            <!-- Summary Stats -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-md-3">
+                    <div class="card border-0 shadow-sm text-center py-2 h-100">
+                        <div class="card-body">
+                            <h6 class="text-muted small text-uppercase fw-bold">Total</h6>
+                            <h3 class="mb-0">30</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card border-0 shadow-sm text-center py-2 h-100"
+                        style="border-bottom: 3px solid #198754 !important;">
+                        <div class="card-body">
+                            <h6 class="text-success small text-uppercase fw-bold">Present</h6>
+                            <h3 class="mb-0 text-success" id="count-present">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card border-0 shadow-sm text-center py-2 h-100"
+                        style="border-bottom: 3px solid #dc3545 !important;">
+                        <div class="card-body">
+                            <h6 class="text-danger small text-uppercase fw-bold">Absent</h6>
+                            <h3 class="mb-0 text-danger" id="count-absent">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card border-0 shadow-sm text-center py-2 h-100"
+                        style="border-bottom: 3px solid #ffc107 !important;">
+                        <div class="card-body">
+                            <h6 class="text-warning small text-uppercase fw-bold">Late</h6>
+                            <h3 class="mb-0 text-warning" id="count-late">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <form class="row g-3 align-items-end">
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold small text-muted">Date</label>
+                            <input type="date" class="form-control" id="attendanceDate">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold small text-muted">Subject</label>
+                            <select class="form-select">
+                                <option selected>Mathematics</option>
+                                <option>Physics</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold small text-muted">Class & Section</label>
+                            <select class="form-select">
+                                <option selected>Grade 10 - Section A</option>
+                                <option>Grade 9 - Section B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-primary w-100">Load Class</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Attendance Table -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="border-0 p-3">Student</th>
+                                    <th class="border-0 p-3 text-center text-success" style="width: 100px;">Present</th>
+                                    <th class="border-0 p-3 text-center text-danger" style="width: 100px;">Absent</th>
+                                    <th class="border-0 p-3 text-center text-warning" style="width: 100px;">Late</th>
+                                    <th class="border-0 p-3">Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-light text-dark border rounded-circle d-flex align-items-center justify-content-center me-3"
+                                                style="width: 35px; height: 35px;">1</div>
+                                            <span class="fw-medium">John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 text-center">
+                                        <input class="form-check-input attendance-radio border-2 border-success"
+                                            type="radio" name="att_1" value="present">
+                                    </td>
+                                    <td class="p-3 text-center">
+                                        <input class="form-check-input attendance-radio border-2 border-danger"
+                                            type="radio" name="att_1" value="absent">
+                                    </td>
+                                    <td class="p-3 text-center">
+                                        <input class="form-check-input attendance-radio border-2 border-warning"
+                                            type="radio" name="att_1" value="late">
+                                    </td>
+                                    <td class="p-3"><input type="text" class="form-control form-control-sm"
+                                            placeholder="Optional note"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-light text-dark border rounded-circle d-flex align-items-center justify-content-center me-3"
+                                                style="width: 35px; height: 35px;">2</div>
+                                            <span class="fw-medium">Jane Smith</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 text-center">
+                                        <input class="form-check-input attendance-radio border-2 border-success"
+                                            type="radio" name="att_2" value="present">
+                                    </td>
+                                    <td class="p-3 text-center">
+                                        <input class="form-check-input attendance-radio border-2 border-danger"
+                                            type="radio" name="att_2" value="absent">
+                                    </td>
+                                    <td class="p-3 text-center">
+                                        <input class="form-check-input attendance-radio border-2 border-warning"
+                                            type="radio" name="att_2" value="late">
+                                    </td>
+                                    <td class="p-3"><input type="text" class="form-control form-control-sm"
+                                            placeholder="Optional note"></td>
+                                </tr>
+                                <!-- Added row for visual density check -->
+                                <tr>
+                                    <td class="p-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-light text-dark border rounded-circle d-flex align-items-center justify-content-center me-3"
+                                                style="width: 35px; height: 35px;">3</div>
+                                            <span class="fw-medium">Alice Johnson</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 text-center">
+                                        <input class="form-check-input attendance-radio border-2 border-success"
+                                            type="radio" name="att_3" value="present">
+                                    </td>
+                                    <td class="p-3 text-center">
+                                        <input class="form-check-input attendance-radio border-2 border-danger"
+                                            type="radio" name="att_3" value="absent">
+                                    </td>
+                                    <td class="p-3 text-center">
+                                        <input class="form-check-input attendance-radio border-2 border-warning"
+                                            type="radio" name="att_3" value="late">
+                                    </td>
+                                    <td class="p-3"><input type="text" class="form-control form-control-sm"
+                                            placeholder="Optional note"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-white border-top p-3 text-end">
+                    <button class="btn btn-primary">Save Attendance</button>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer mt-auto">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
+                            <span class="fw-bold text-primary">EduTrack</span>
+                        </div>
+                        <div class="col-md-4 text-center mb-2 mb-md-0">
+                            <small class="text-muted">Support: +962-7-9000-0000</small>
+                        </div>
+                        <div class="col-md-4 text-center text-md-end">
+                            <small class="text-muted mb-0 me-3">&copy; 2026</small>
+                            <a href="#" class="footer-link">Privacy</a>
+                            <a href="#" class="footer-link">Terms</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Set today's date
+        document.getElementById('attendanceDate').valueAsDate = new Date();
+
+        // Sidebar logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('sidebarToggle');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (toggle) toggle.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('show'); overlay.classList.toggle('show'); });
+            if (overlay) overlay.addEventListener('click', () => { sidebar.classList.remove('show'); overlay.classList.remove('show'); });
+        });
+
+        // Bulk Actions (Mock)
+        function markAllPresent() {
+            document.querySelectorAll('input[value="present"]').forEach(r => r.checked = true);
+            updateStats();
+        }
+
+        function resetAttendance() {
+            document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+            updateStats();
+        }
+
+        // Stats Update Mock
+        function updateStats() {
+            const present = document.querySelectorAll('input[value="present"]:checked').length;
+            const absent = document.querySelectorAll('input[value="absent"]:checked').length;
+            const late = document.querySelectorAll('input[value="late"]:checked').length;
+
+            document.getElementById('count-present').innerText = present;
+            document.getElementById('count-absent').innerText = absent;
+            document.getElementById('count-late').innerText = late;
+        }
+
+        // Listen for changes
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', updateStats);
+        });
+    </script>
+</body>
+
+</html>

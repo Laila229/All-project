@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex justify-between items-center page-header">
+                    <div>
+                        <h1 class="page-title">Manage Users</h1>
+                        <p style="color: var(--text-secondary);">Students, Teachers and Staff</p>
+                    </div>
+                    <div class="flex gap-sm">
+                        <a href="admin-add-student.html" class="btn btn-primary">
+                            <i data-lucide="user-plus" style="margin-right: 0.5rem; width: 18px; height: 18px;"></i>
+                            Add Student
+                        </a>
+                        <a href="admin-add-teacher.html" class="btn btn-outline" style="background-color: white;">
+                            <i data-lucide="graduation-cap"
+                                style="margin-right: 0.5rem; width: 18px; height: 18px;"></i>
+                            Add Teacher
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: var(--spacing-md);">
+                    <div class="flex gap-md">
+                        <input type="text" class="form-input" placeholder="Search by name or email..."
+                            style="max-width: 300px;">
+                        <select class="form-select" style="max-width: 200px;">
+                            <option value="all">All Roles</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <select class="form-select" style="max-width: 200px;">
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 0; overflow: hidden;">
+                    <div class="table-container" style="border: none; border-radius: 0;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Role</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Joined Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div
+                                                style="width: 32px; height: 32px; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem;">
+                                                JD
+                                            </div>
+                                            <div>
+                                                <div style="font-weight: 500;">John Doe</div>
+                                                <div style="font-size: 0.75rem; color: var(--text-secondary);">ID:
+                                                    2024001</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-blue">Student</span></td>
+                                    <td>john.doe@school.com</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Jan 12, 2024</td>
+                                    <td>
+                                        <div class="flex gap-sm">
+                                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                    data-lucide="edit-2"
+                                                    style="width: 16px; height: 16px;"></i></button>
+                                            <button class="btn btn-outline"
+                                                style="padding: 0.25rem 0.5rem; color: var(--danger); border-color: var(--danger);"><i
+                                                    data-lucide="trash" style="width: 16px; height: 16px;"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div
+                                                style="width: 32px; height: 32px; background-color: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem;">
+                                                SW
+                                            </div>
+                                            <div>
+                                                <div style="font-weight: 500;">Sarah Wilson</div>
+                                                <div style="font-size: 0.75rem; color: var(--text-secondary);">ID:
+                                                    TCH005</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-warning">Teacher</span></td>
+                                    <td>sarah.w@school.com</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Aug 20, 2023</td>
+                                    <td>
+                                        <div class="flex gap-sm">
+                                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                    data-lucide="edit-2"
+                                                    style="width: 16px; height: 16px;"></i></button>
+                                            <button class="btn btn-outline"
+                                                style="padding: 0.25rem 0.5rem; color: var(--danger); border-color: var(--danger);"><i
+                                                    data-lucide="trash" style="width: 16px; height: 16px;"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('admin', 'admin-users.html', { name: 'Administrator' });
+        });
+    </script>
+</body>
+
+</html>

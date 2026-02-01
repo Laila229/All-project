@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Subject - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex items-center gap-sm"
+                    style="margin-bottom: var(--spacing-md); color: var(--text-secondary); font-size: 0.875rem;">
+                    <a href="admin-dashboard.html">Dashboard</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <a href="admin-subjects.html">Subjects</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <span style="color: var(--text-primary);">Add Subject</span>
+                </div>
+
+                <div class="page-header">
+                    <h1 class="page-title">Add New Subject</h1>
+                    <p style="color: var(--text-secondary);">Define a subject and assign it to a class</p>
+                </div>
+
+                <div class="card" style="max-width: 600px;">
+                    <form
+                        onsubmit="event.preventDefault(); alert('Subject Created!'); window.location.href='admin-subjects.html';">
+                        <div class="form-group">
+                            <label class="form-label">Subject Name</label>
+                            <input type="text" class="form-input" placeholder="e.g. Mathematics, History" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Subject Code (Optional)</label>
+                            <input type="text" class="form-input" placeholder="e.g. MTH101">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">For Class</label>
+                            <select class="form-select" required>
+                                <option value="" disabled selected>Select a class...</option>
+                                <option value="1">Grade 1</option>
+                                <option value="10">Grade 10</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Assign Teacher (Optional)</label>
+                            <select class="form-select">
+                                <option value="" selected>Select a teacher...</option>
+                                <option value="1">Sarah Wilson</option>
+                                <option value="2">Mike Johnson</option>
+                            </select>
+                            <p style="margin-top: 4px; font-size: 0.75rem; color: var(--text-secondary);">You can assign
+                                a teacher later.</p>
+                        </div>
+
+                        <div class="flex justify-end gap-md" style="margin-top: var(--spacing-xl);">
+                            <a href="admin-subjects.html" class="btn btn-outline">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Create Subject</button>
+                        </div>
+                    </form>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('admin', 'admin-subjects.html', { name: 'Administrator' });
+        });
+    </script>
+</body>
+
+</html>

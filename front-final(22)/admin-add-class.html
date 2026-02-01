@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Class - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex items-center gap-sm"
+                    style="margin-bottom: var(--spacing-md); color: var(--text-secondary); font-size: 0.875rem;">
+                    <a href="admin-dashboard.html">Dashboard</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <a href="admin-classes.html">Classes</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <span style="color: var(--text-primary);">Add Class</span>
+                </div>
+
+                <div class="page-header">
+                    <h1 class="page-title">Add New Class</h1>
+                    <p style="color: var(--text-secondary);">Create a new grade level for the school</p>
+                </div>
+
+                <div class="card" style="max-width: 600px;">
+                    <form
+                        onsubmit="event.preventDefault(); document.getElementById('success-message').classList.remove('hidden'); this.classList.add('hidden');">
+                        <div class="form-group">
+                            <label class="form-label">Class Name</label>
+                            <input type="text" class="form-input" placeholder="e.g. Grade 10" required>
+                            <p style="margin-top: 4px; font-size: 0.75rem; color: var(--text-secondary);">Enter the name
+                                of the grade or class level.</p>
+                        </div>
+
+                        <div class="flex justify-end gap-md" style="margin-top: var(--spacing-xl);">
+                            <a href="admin-classes.html" class="btn btn-outline">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Create Class</button>
+                        </div>
+                    </form>
+
+                    <!-- Success State -->
+                    <div id="success-message" class="hidden flex flex-col items-center justify-center text-center"
+                        style="padding: var(--spacing-xl) 0;">
+                        <div
+                            style="width: 48px; height: 48px; background-color: #DCFCE7; color: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md);">
+                            <i data-lucide="check" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: var(--spacing-sm);">Class
+                            Created Successfully!</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-xl);">What would you like
+                            to do next?</p>
+
+                        <div class="flex flex-col gap-md w-full" style="max-width: 300px;">
+                            <a href="admin-add-section.html" class="btn btn-primary w-full">
+                                <i data-lucide="plus" style="margin-right: 0.5rem; width: 18px; height: 18px;"></i>
+                                Add Sections to Class
+                            </a>
+                            <a href="admin-add-subject.html" class="btn btn-outline w-full">
+                                <i data-lucide="book" style="margin-right: 0.5rem; width: 18px; height: 18px;"></i>
+                                Assign Subjects to Class
+                            </a>
+                            <a href="admin-classes.html"
+                                style="margin-top: var(--spacing-sm); color: var(--text-secondary); font-size: 0.875rem;">Return
+                                to Classes List</a>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('admin', 'admin-classes.html', { name: 'Administrator' });
+        });
+    </script>
+</body>
+
+</html>

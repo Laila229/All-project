@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Teacher - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex items-center gap-sm"
+                    style="margin-bottom: var(--spacing-md); color: var(--text-secondary); font-size: 0.875rem;">
+                    <a href="admin-dashboard.html">Dashboard</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <a href="admin-users.html">Users</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <span style="color: var(--text-primary);">Add Teacher</span>
+                </div>
+
+                <div class="page-header">
+                    <h1 class="page-title">Add New Teacher</h1>
+                    <p style="color: var(--text-secondary);">Create a new staff profile.</p>
+                </div>
+
+                <div class="card" style="max-width: 600px;">
+                    <form
+                        onsubmit="event.preventDefault(); alert('Teacher Created!'); window.location.href='admin-users.html';">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="e.g. John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="teacher@school.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <div class="flex gap-sm">
+                                <input type="password" class="form-input" placeholder="Min. 8 characters" required>
+                                <button type="button" class="btn btn-outline"
+                                    style="padding: 0 0.75rem;">Generate</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Department / Specialization (Optional)</label>
+                            <input type="text" class="form-input" placeholder="e.g. Mathematics, Science">
+                        </div>
+
+                        <div class="flex justify-end gap-md" style="margin-top: var(--spacing-xl);">
+                            <a href="admin-users.html" class="btn btn-outline">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Create Teacher</button>
+                        </div>
+                    </form>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('admin', 'admin-users.html', { name: 'Administrator' });
+        });
+    </script>
+</body>
+
+</html>

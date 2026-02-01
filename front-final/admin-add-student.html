@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex items-center gap-sm"
+                    style="margin-bottom: var(--spacing-md); color: var(--text-secondary); font-size: 0.875rem;">
+                    <a href="admin-dashboard.html">Dashboard</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <a href="admin-users.html">Users</a>
+                    <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    <span style="color: var(--text-primary);">Add Student</span>
+                </div>
+
+                <div class="page-header">
+                    <h1 class="page-title">Add New Student</h1>
+                    <p style="color: var(--text-secondary);">Enroll a new student and assign them to a class.</p>
+                </div>
+
+                <div class="card" style="max-width: 600px;">
+                    <form
+                        onsubmit="event.preventDefault(); alert('Student Created!'); window.location.href='admin-users.html';">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="e.g. Alex Davidson" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address (Optional)</label>
+                            <input type="email" class="form-input" placeholder="student@school.com">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-md form-group">
+                            <div>
+                                <label class="form-label">Assign Class</label>
+                                <select class="form-select" required>
+                                    <option value="" disabled selected>Select...</option>
+                                    <option value="1">Grade 1</option>
+                                    <option value="5">Grade 5</option>
+                                    <option value="10">Grade 10</option>
+                                    <option value="11">Grade 11</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Assign Section</label>
+                                <select class="form-select" required>
+                                    <option value="" disabled selected>Select...</option>
+                                    <option value="A">Section A</option>
+                                    <option value="B">Section B</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <div class="flex gap-sm">
+                                <input type="password" class="form-input" placeholder="Min. 8 characters" required>
+                                <button type="button" class="btn btn-outline"
+                                    style="padding: 0 0.75rem;">Generate</button>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end gap-md" style="margin-top: var(--spacing-xl);">
+                            <a href="admin-users.html" class="btn btn-outline">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Create Student</button>
+                        </div>
+                    </form>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('admin', 'admin-users.html', { name: 'Administrator' });
+        });
+    </script>
+</body>
+
+</html>

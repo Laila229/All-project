@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Subjects - Teacher Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="mobile-navbar justify-content-between">
+        <div class="d-flex align-items-center gap-3"><button class="btn btn-light border-0" id="sidebarToggle"><i
+                    class="bi bi-list fs-4"></i></button><span class="fw-bold text-primary">Teacher Portal</span></div>
+        <div class="dropdown">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2"
+                style="width: 32px; height: 32px;">T</div>
+        </div>
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand"><i class="bi bi-mortarboard-fill me-2"></i>EduTrack</div>
+        <nav class="nav flex-column mt-3">
+            <a href="teacher-dashboard.html" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="teacher-subjects.html" class="nav-link active"><i class="bi bi-book"></i> My Subjects</a>
+            <a href="teacher-grades.html" class="nav-link"><i class="bi bi-journal-text"></i> Gradebook</a>
+            <a href="teacher-add-grade.html" class="nav-link"><i class="bi bi-plus-circle"></i> Add Grades</a>
+            <a href="teacher-attendance.html" class="nav-link"><i class="bi bi-calendar-check"></i>
+                Attendance</a>
+            <a href="teacher-profile.html" class="nav-link"><i class="bi bi-person"></i> Profile</a>
+            <div class="mt-auto border-top pt-2"><a href="teacher-login.html" class="nav-link text-danger"><i
+                        class="bi bi-box-arrow-right"></i> Logout</a></div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-4">My Subjects</h1>
+
+            <div class="row g-4">
+                <!-- Subject Card 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded">
+                                    <i class="bi bi-calculator fs-3 text-primary"></i>
+                                </div>
+                                <span class="badge bg-light text-dark border">Grade 10 A</span>
+                            </div>
+                            <h5 class="card-title fw-bold">Mathematics</h5>
+                            <p class="text-muted small">Daily • 09:00 AM - 10:00 AM</p>
+                            <div class="d-grid">
+                                <a href="teacher-subject-details.html" class="btn btn-outline-primary">Manage Class</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subject Card 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="bg-info bg-opacity-10 p-3 rounded">
+                                    <i class="bi bi-calculator fs-3 text-info"></i>
+                                </div>
+                                <span class="badge bg-light text-dark border">Grade 9 B</span>
+                            </div>
+                            <h5 class="card-title fw-bold">Mathematics</h5>
+                            <p class="text-muted small">Mon, Wed, Fri • 11:30 AM</p>
+                            <div class="d-grid">
+                                <a href="teacher-subject-details.html" class="btn btn-outline-primary">Manage Class</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('sidebarToggle');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (toggle) toggle.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('show'); overlay.classList.toggle('show'); });
+            if (overlay) overlay.addEventListener('click', () => { sidebar.classList.remove('show'); overlay.classList.remove('show'); });
+        });
+    </script>
+</body>
+
+</html>

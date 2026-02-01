@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Subjects - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex justify-between items-center page-header">
+                    <div>
+                        <h1 class="page-title">Manage Subjects</h1>
+                        <p style="color: var(--text-secondary);">Course catalog and subject details</p>
+                    </div>
+                    <a href="admin-add-subject.html" class="btn btn-primary">
+                        <i data-lucide="plus" style="margin-right: 0.5rem; width: 18px; height: 18px;"></i>
+                        Add Subject
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-3 gap-md">
+                    <!-- Subject Card -->
+                    <div class="card flex flex-col gap-sm">
+                        <div class="flex justify-between items-start">
+                            <div
+                                style="width: 48px; height: 48px; background-color: #DCFCE7; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="calculator"
+                                    style="color: var(--success); width: 24px; height: 24px;"></i>
+                            </div>
+                            <div class="flex gap-sm">
+                                <button class="btn btn-outline" style="padding: 0.25rem;"><i data-lucide="edit-2"
+                                        style="width: 14px; height: 14px;"></i></button>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style="font-weight: bold; font-size: 1.125rem;">Mathematics</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">Grade 1 - 12</p>
+                        </div>
+                        <div
+                            style="margin-top: auto; padding-top: var(--spacing-md); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.875rem;">
+                            <span style="color: var(--text-secondary);">Code: MTH101</span>
+                            <span style="font-weight: 500;">4 Credits</span>
+                        </div>
+                    </div>
+
+                    <div class="card flex flex-col gap-sm">
+                        <div class="flex justify-between items-start">
+                            <div
+                                style="width: 48px; height: 48px; background-color: #DBEAFE; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="flask-conical"
+                                    style="color: var(--primary); width: 24px; height: 24px;"></i>
+                            </div>
+                            <div class="flex gap-sm">
+                                <button class="btn btn-outline" style="padding: 0.25rem;"><i data-lucide="edit-2"
+                                        style="width: 14px; height: 14px;"></i></button>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style="font-weight: bold; font-size: 1.125rem;">Science</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">Grade 1 - 10</p>
+                        </div>
+                        <div
+                            style="margin-top: auto; padding-top: var(--spacing-md); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.875rem;">
+                            <span style="color: var(--text-secondary);">Code: SCI202</span>
+                            <span style="font-weight: 500;">4 Credits</span>
+                        </div>
+                    </div>
+
+                    <div class="card flex flex-col gap-sm">
+                        <div class="flex justify-between items-start">
+                            <div
+                                style="width: 48px; height: 48px; background-color: #FEE2E2; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="book" style="color: var(--danger); width: 24px; height: 24px;"></i>
+                            </div>
+                            <div class="flex gap-sm">
+                                <button class="btn btn-outline" style="padding: 0.25rem;"><i data-lucide="edit-2"
+                                        style="width: 14px; height: 14px;"></i></button>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style="font-weight: bold; font-size: 1.125rem;">English Literature</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">Grade 5 - 12</p>
+                        </div>
+                        <div
+                            style="margin-top: auto; padding-top: var(--spacing-md); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.875rem;">
+                            <span style="color: var(--text-secondary);">Code: ENG303</span>
+                            <span style="font-weight: 500;">3 Credits</span>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('admin', 'admin-subjects.html', { name: 'Administrator' });
+        });
+    </script>
+</body>
+
+</html>

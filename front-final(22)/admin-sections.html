@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Sections - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="flex justify-between items-center page-header">
+                    <div>
+                        <h1 class="page-title">Manage Sections</h1>
+                        <p style="color: var(--text-secondary);">Organize classes into sections</p>
+                    </div>
+                    <a href="admin-add-section.html" class="btn btn-primary">
+                        <i data-lucide="plus" style="margin-right: 0.5rem; width: 18px; height: 18px;"></i>
+                        Add Section
+                    </a>
+                </div>
+
+                <div class="card" style="padding: 0; overflow: hidden;">
+                    <div class="table-container" style="border: none; border-radius: 0;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Section Name</th>
+                                    <th>Class</th>
+                                    <th>Capacity</th>
+                                    <th>Active Students</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div
+                                                style="width: 32px; height: 32px; background-color: #FEF3C7; color: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                                A
+                                            </div>
+                                            <span style="font-weight: 500;">Section A</span>
+                                        </div>
+                                    </td>
+                                    <td>Grade 1</td>
+                                    <td>30</td>
+                                    <td>28</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <div class="flex gap-sm">
+                                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                    data-lucide="edit-2"
+                                                    style="width: 16px; height: 16px;"></i></button>
+                                            <button class="btn btn-outline"
+                                                style="padding: 0.25rem 0.5rem; color: var(--danger); border-color: var(--danger);"><i
+                                                    data-lucide="trash" style="width: 16px; height: 16px;"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div
+                                                style="width: 32px; height: 32px; background-color: #FEF3C7; color: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                                B
+                                            </div>
+                                            <span style="font-weight: 500;">Section B</span>
+                                        </div>
+                                    </td>
+                                    <td>Grade 1</td>
+                                    <td>30</td>
+                                    <td>25</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <div class="flex gap-sm">
+                                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem;"><i
+                                                    data-lucide="edit-2"
+                                                    style="width: 16px; height: 16px;"></i></button>
+                                            <button class="btn btn-outline"
+                                                style="padding: 0.25rem 0.5rem; color: var(--danger); border-color: var(--danger);"><i
+                                                    data-lucide="trash" style="width: 16px; height: 16px;"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('admin', 'admin-sections.html', { name: 'Administrator' });
+        });
+    </script>
+</body>
+
+</html>

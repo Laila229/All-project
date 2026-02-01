@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Homework - School Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <div id="sidebar-container"></div>
+
+        <div class="main-content">
+            <div id="navbar-container"></div>
+
+            <main class="page-content">
+                <div class="page-header">
+                    <h1 class="page-title">Create Homework</h1>
+                    <p style="color: var(--text-secondary);">Assign new work to your students</p>
+                </div>
+
+                <div class="card" style="max-width: 800px;">
+                    <form
+                        onsubmit="event.preventDefault(); alert('Homework Assigned!'); window.location.href='teacher-homework.html';">
+                        <div class="grid grid-cols-2 gap-md form-group">
+                            <div>
+                                <label class="form-label">Title</label>
+                                <input type="text" class="form-input" placeholder="e.g. Algebra Problems" required>
+                            </div>
+                            <div>
+                                <label class="form-label">Subject</label>
+                                <select class="form-select">
+                                    <option>Mathematics</option>
+                                    <option>Physics</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-md form-group">
+                            <div>
+                                <label class="form-label">Class & Section</label>
+                                <select class="form-select">
+                                    <option>Class 5A</option>
+                                    <option>Class 5B</option>
+                                    <option>Class 8B</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Due Date</label>
+                                <input type="date" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Description / Instructions</label>
+                            <textarea class="form-input" rows="5"
+                                placeholder="Enter detailed instructions here..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Attachments (Optional)</label>
+                            <input type="file" class="form-input" style="padding: 0.5rem;">
+                        </div>
+
+                        <div class="flex justify-end gap-md">
+                            <a href="teacher-homework.html" class="btn btn-outline">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Assign Homework</button>
+                        </div>
+                    </form>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AppComponents.init('teacher', 'teacher-create-homework.html', { name: 'Sarah Wilson' });
+        });
+    </script>
+</body>
+
+</html>
